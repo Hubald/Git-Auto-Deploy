@@ -25,7 +25,7 @@ class GitWrapper():
         else:
             commands.append('unset GIT_DIR')
 
-         if "prepull" in repo_config:
+        if "prepull" in repo_config:
             commands.append(repo_config['prepull'])
 
         commands.append('git remote set-url ' + repo_config['remote'] + " " + repo_config['url'])
@@ -117,10 +117,9 @@ class GitWrapper():
             logger.info('No local repository path configured, no clone will occure')
             return 0
 
+        commands = []
         if "prepull" in repo_config:
             commands.append(repo_config['prepull'])
-
-        commands = []
         commands.append('unset GIT_DIR')
         commands.append('git clone --recursive ' + repo_config['url'] + ' -b ' + repo_config['branch'] + ' ' + repo_config['path'])
 
